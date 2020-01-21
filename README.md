@@ -33,7 +33,9 @@ public class /*NAME*/Reference : SOVariableReference</*NAME*/>
 #### 2. That's All, Folks!
 
 >Make full use of the UI.
+>Press "+" to add a new object to an empty field.
 >
+>You can also edit the object directly from wherever, no need to find the object, and then find the GameObject/ScriptableObject you were originally working on.
 
 ![IMAGEPLACEHOLDER - image](images~/0.png)
 
