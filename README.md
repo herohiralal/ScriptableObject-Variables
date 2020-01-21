@@ -1,3 +1,4 @@
+
 # ScriptableObject Variables
 
 ### What?
@@ -32,6 +33,8 @@ public class /*NAME*/Reference : SOVariableReference</*NAME*/>
 #### 2. That's All, Folks!
 
 >Make full use of the UI.
+>
+
 ![IMAGEPLACEHOLDER - image](images~/0.png)
 
 
