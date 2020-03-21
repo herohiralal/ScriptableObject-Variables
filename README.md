@@ -24,9 +24,9 @@ public class /*NAME*/Reference : SOVariableReference</*NAME*/>
   public /*NAME*/Reference() { }  
   public /*NAME*/Reference(/*NAME*/ value) : base(value) { }  
   
- [SerializeField] private /*NAME*/Variable Variable = null;  
+ [SerializeField] private /*NAME*/Variable variable = null;  
  
- protected override SOVariable</*NAME*/> base_Variable => Variable;  
+ protected override SOVariable</*NAME*/> BaseVariable => variable;  
 }
 ```
 
