@@ -12,11 +12,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
         #endregion
 
         [Tooltip("Value")]
-        [SerializeField] private ByteVariable Variable = null;
+        [SerializeField] private ByteVariable variable = null;
 
         /// <summary>
         /// Property that the base class uses.
         /// </summary>
-        protected override SOVariable<byte> base_Variable => Variable;
+        protected override SOVariable<byte> BaseVariable => variable;
     }
 }

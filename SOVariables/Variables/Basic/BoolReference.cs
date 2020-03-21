@@ -12,11 +12,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
         #endregion
 
         [Tooltip("Value")]
-        [SerializeField] private BoolVariable Variable = null;
+        [SerializeField] private BoolVariable variable = null;
 
         /// <summary>
         /// Property that the base class uses.
         /// </summary>
-        protected override SOVariable<bool> base_Variable => Variable;
+        protected override SOVariable<bool> BaseVariable => variable;
     }
 }

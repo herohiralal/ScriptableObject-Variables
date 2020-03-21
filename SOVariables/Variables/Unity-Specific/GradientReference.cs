@@ -12,11 +12,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
         #endregion
 
         [Tooltip("Value")]
-        [SerializeField] private GradientVariable Variable = null;
+        [SerializeField] private GradientVariable variable = null;
 
         /// <summary>
         /// Property that the base class uses.
         /// </summary>
-        protected override SOVariable<Gradient> base_Variable => Variable;
+        protected override SOVariable<Gradient> BaseVariable => variable;
     }
 }

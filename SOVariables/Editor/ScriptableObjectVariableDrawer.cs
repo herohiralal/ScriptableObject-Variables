@@ -10,11 +10,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
         private static readonly string NAMESPACE_FOR_SOVARIABLES = typeof(SOVariable).Namespace;
         private static readonly string ASSEMBLY_FOR_SOVARIABLES = typeof(SOVariable).Assembly.FullName;
 
-        private const string VARIABLE_VALUE_NAME = "Value";
+        private const string VARIABLE_VALUE_NAME = "value";
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float height = 21;
+            float height = EditorGUIUtility.singleLineHeight;
 
             if (property.objectReferenceValue != null)
             {
@@ -27,18 +27,21 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var referenceRect = new Rect(position.x, position.y, position.width, 21);
+            var referenceRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
             var mainRect = EditorGUI.PrefixLabel(referenceRect, label);
-            mainRect.height = 19;
+
+            var bufferedHeight = EditorGUIUtility.singleLineHeight - 2;
+            
+            mainRect.height = bufferedHeight;
 
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
             if (property.objectReferenceValue == null)
             {
-                var buttonRect = new Rect(mainRect.x, mainRect.y, 19, 19);
-                mainRect.x += 21;
-                mainRect.width -= 21;
+                var buttonRect = new Rect(mainRect.x, mainRect.y, bufferedHeight, bufferedHeight);
+                mainRect.x += EditorGUIUtility.singleLineHeight;
+                mainRect.width -= EditorGUIUtility.singleLineHeight;
                 if (GUI.Button(buttonRect, "+"))
                 {
                     CreateVariable(property);
@@ -49,8 +52,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
                 var serializedReference = new SerializedObject(property.objectReferenceValue);
                 var serializedValue = serializedReference.FindProperty(VARIABLE_VALUE_NAME);
                 
-                var valueRect = new Rect(mainRect.x - 21, position.y + 21,
-                    mainRect.width + 21, EditorGUI.GetPropertyHeight(serializedValue));
+                var valueRect = new Rect(
+                    mainRect.x - EditorGUIUtility.singleLineHeight,
+                    position.y + EditorGUIUtility.singleLineHeight,
+                    mainRect.width + EditorGUIUtility.singleLineHeight,
+                    EditorGUI.GetPropertyHeight(serializedValue));
 
                 EditorGUI.BeginChangeCheck();
                 EditorGUI.PropertyField(valueRect, serializedValue, GUIContent.none);

@@ -12,11 +12,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
         #endregion
 
         [Tooltip("Value")]
-        [SerializeField] private CurveVariable Variable = null;
+        [SerializeField] private CurveVariable variable = null;
 
         /// <summary>
         /// Property that the base class uses.
         /// </summary>
-        protected override SOVariable<AnimationCurve> base_Variable => Variable;
+        protected override SOVariable<AnimationCurve> BaseVariable => variable;
     }
 }

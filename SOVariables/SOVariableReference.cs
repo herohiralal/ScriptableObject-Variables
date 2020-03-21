@@ -8,28 +8,42 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
     [Serializable]
     public abstract class SOVariableReference<T> : SOVariableReference
     {
-        public bool UseConstant;
-        [SerializeField] private T Constant;
-        protected abstract SOVariable<T> base_Variable { get; }
+        // determines whether to use constant or variable
+        public bool useConstant;
+        
+        // constant
+        [SerializeField] private T constant;
+        // variable
+        protected abstract SOVariable<T> BaseVariable { get; }
 
-        public SOVariableReference() { }
-        public SOVariableReference(T value)
+        // constructors
+        protected SOVariableReference() { }
+        protected SOVariableReference(T value)
         {
-            UseConstant = true;
-            Constant = value;
+            useConstant = true;
+            constant = value;
         }
 
-        public void SetValue(T value)
+        // value access
+        public T Value
         {
-            if (UseConstant) Constant = value;
-            else base_Variable?.SetValue(value);
+            get => useConstant ? constant : BaseVariable.value;
+            set
+            {
+                if (useConstant || BaseVariable == null) constant = value;
+                else BaseVariable.SetValue(value);
+            }
         }
 
-        public T Value => UseConstant ? Constant : base_Variable.Value;
+        // implicit operator
+        public static implicit operator T(SOVariableReference<T> original) => original.Value;
 
-        public static implicit operator T(SOVariableReference<T> original)
-        {
-            return original.Value;
-        }
+        // add subscriber to value updates
+        public void AddListener(Action<T> subscriber)
+        { if (BaseVariable != null) BaseVariable.SetValue += subscriber; }
+        
+        // remove subscriber to value updates
+        public void RemoveListener(Action<T> subscriber)
+        { if (BaseVariable != null) BaseVariable.SetValue -= subscriber; }
     }
 }

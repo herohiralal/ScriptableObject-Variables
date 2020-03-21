@@ -6,9 +6,9 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
     [CustomPropertyDrawer(typeof(SOVariableReference), true)]
     public class ScriptableObjectVariableReferenceDrawer : PropertyDrawer
     {
-        private const string USE_CONSTANT_PROPERTY_NAME = "UseConstant";
-        private const string CONSTANT_VALUE_PROPERTY_NAME = "Constant";
-        private const string VARIABLE_VALUE_PROPERTY_NAME = "Variable";
+        private const string USE_CONSTANT_PROPERTY_NAME = "useConstant";
+        private const string CONSTANT_VALUE_PROPERTY_NAME = "constant";
+        private const string VARIABLE_VALUE_PROPERTY_NAME = "variable";
         private static readonly string[] POPUP_OPTIONS = { "Use Constant", "Use Variable" };
         private GUIStyle popupStyle;
 

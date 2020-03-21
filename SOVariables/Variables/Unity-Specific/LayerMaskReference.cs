@@ -12,11 +12,11 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
         #endregion
 
         [Tooltip("Value")]
-        [SerializeField] private LayerMaskVariable Variable = null;
+        [SerializeField] private LayerMaskVariable variable = null;
 
         /// <summary>
         /// Property that the base class uses.
         /// </summary>
-        protected override SOVariable<LayerMask> base_Variable => Variable;
+        protected override SOVariable<LayerMask> BaseVariable => variable;
     }
 }

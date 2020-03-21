@@ -8,11 +8,15 @@ namespace Hiralal.AdvancedPatterns.ScriptableObjectVariables
     [Serializable]
     public abstract class SOVariable<T> : SOVariable
     {
-        public T Value;
+        public T value;
+        public Action<T> SetValue = null;
 
-        public void SetValue(T value)
+        private void Awake() => SetValue += UpdateValue;
+        private void OnDestroy() => SetValue -= UpdateValue;
+
+        private void UpdateValue(T newValue)
         {
-            Value = value;
+            value = newValue;
         }
     }
 }
