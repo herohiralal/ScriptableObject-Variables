@@ -1,3 +1,4 @@
+# **OBSOLETE - CHECK OUT [HIRATOOLS](github.com/herohiralal/hiratools) INSTEAD. IT INCLUDES A BETTER VERSION OF THIS.**
 
 # ScriptableObject Variables
 
